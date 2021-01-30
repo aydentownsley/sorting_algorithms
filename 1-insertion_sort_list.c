@@ -1,59 +1,36 @@
 #include "sort.h"
 
 /**
- *
- *
+ * insertion_sort_list - function to insertion sort a list
+ * @list: list to sort
  */
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *nnod = NULL, *curr = NULL, *dll = *list, *pnod = NULL;
+	listint_t *curr, *dll = (*list)->next, *pnod;
 
-	while (dll != NULL)
+	if (list == NULL || (*list)->next == NULL)
+		return;
+
+	while (dll)
 	{
-		if (dll->n > dll->next->n)
+		curr = dll;
+		pnod = dll->prev;
+		while (pnod && curr->n < pnod->n)
 		{
-			curr = dll;
-			nnod = dll->next;
-			if (nnod->next == NULL)
-				curr->next = NULL;
-			else
-				curr->next = nnod->next;
-			if (curr->prev == NULL)
-			{
-				nnod->prev = NULL;
-				*list = nnod;
-			}
-			else
-				curr->prev->next = nnod;
-			nnod->next = curr;
-			nnod->prev = curr->prev;
-			curr->prev = nnod;
-			curr->next->prev = curr;
-			print_list(*list);
-			while (nnod->n < nnod->prev->n)
-			{
-				pnod = nnod->prev;
-				curr = nnod;
-				if (pnod->prev == NULL)
-				{
-					curr->prev = NULL;
-					*list = curr;
-				}
-				else
-				{
-					curr->prev = pnod->prev;
-					pnod->prev->next = nnod;
-				}
-				pnod->next = curr->next;
-				curr->next = pnod;
+			if (pnod->prev != NULL)
+				pnod->prev->next = curr;
+			if (curr->next != NULL)
 				curr->next->prev = pnod;
-				pnod->prev = curr;
-				print_list(*list);
-				nnod = nnod->prev;
-			}
+			if (pnod->prev == NULL)
+				(*list) = curr;
+			pnod->next = curr->next;
+			curr->next = pnod;
+			curr->prev = pnod->prev;
+			pnod->prev = curr;
+			print_list(*list);
+			pnod = curr->prev;
 		}
 		dll = dll->next;
-
 	}
 }
