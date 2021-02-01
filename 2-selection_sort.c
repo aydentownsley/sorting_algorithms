@@ -14,8 +14,8 @@
 void selection_sort(int *array, size_t size)
 {
 	int swap, min = 0;
-	long unsigned int min_pos = 0, idx = 0, min_p = 1;
-	
+	unsigned long int min_pos = 0, idx = 0, min_p = 1;
+
 	if (size < 2)
 		return;
 
@@ -29,7 +29,7 @@ void selection_sort(int *array, size_t size)
 				min = array[idx];
 				min_pos = idx;
 			}
-			
+
 			if (idx == size - 1 && array[min_p - 1] != min)
 			{
 				swap = array[min_p - 1];
