@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * selection sort - serches for min
+ * selection_sort - serches for min
  * and moves to front of array.
  *
  * @array: array being searched
