@@ -1,7 +1,9 @@
 #include "sort.h"
 
 /**
- * bubble_sort
+ * bubble_sort - sorts by comparing adjacent
+ * numbers and swapping if prev is larger
+ * than next.
  *
  * @array: data to be sorted
  * @size: size of array
@@ -16,7 +18,7 @@ void bubble_sort(int *array, size_t size)
 	while (flag != 0)
 	{
 		flag = 0;
-		for(idx = 0; idx < size - 1; idx++)
+		for (idx = 0; idx < size - 1; idx++)
 		{
 			if (array[idx] < array[idx + 1])
 				continue;
