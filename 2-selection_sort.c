@@ -2,20 +2,24 @@
 #include <stdlib.h>
 
 /**
+ * selection sort - serches for min
+ * and moves to front of array.
  *
+ * @array: array being searched
+ * @size: size of array
  *
- *
- *
- *
- *
+ * Return: void
  */
 
 void selection_sort(int *array, size_t size)
 {
 	int swap, min = 0;
-	long unsigned int min_pos = 0, idx = 0, min_p = 1, loops = 0;
+	long unsigned int min_pos = 0, idx = 0, min_p = 1;
 	
-	while (loops < size)
+	if (size < 2)
+		return;
+
+	while (min_p != size)
 	{
 		min = array[min_p - 1];
 		for (idx = min_p; idx < size; idx++)
@@ -25,8 +29,8 @@ void selection_sort(int *array, size_t size)
 				min = array[idx];
 				min_pos = idx;
 			}
-
-			if (idx == size - 1)
+			
+			if (idx == size - 1 && array[min_p - 1] != min)
 			{
 				swap = array[min_p - 1];
 				array[min_p - 1] = min;
@@ -35,6 +39,5 @@ void selection_sort(int *array, size_t size)
 			}
 		}
 		min_p++;
-		loops++;
 	}
 }
