@@ -7,10 +7,11 @@
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *curr, *dll = (*list)->next, *pnod;
+	listint_t *curr, *dll, *pnod;
 
 	if ((list == NULL) || ((*list)->next == NULL) || ((*list) == NULL))
 		return;
+	dll = (*list)->next;
 
 	while (dll)
 	{
