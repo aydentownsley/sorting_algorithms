@@ -27,12 +27,11 @@ void quick_sort(int *array, size_t size)
 
 void qsrec(size_t start, size_t stop, int *array, size_t size)
 {
-	int tmp;
+	int tmp, flag = 0;
 	size_t j, nstart, nstop, i = start;
 
 	if (start >= stop)
 		return;
-
 	for (j = start; j < stop; j++)
 	{
 		if (array[j] < array[stop])
@@ -41,7 +40,7 @@ void qsrec(size_t start, size_t stop, int *array, size_t size)
 			array[i] = array[j];
 			array[j] = tmp;
 			if (array[j] != array[i])
-			    print_array(array, size);
+				print_array(array, size);
 			i += 1;
 		}
 	}
@@ -50,16 +49,30 @@ void qsrec(size_t start, size_t stop, int *array, size_t size)
 	array[stop] = tmp;
 	if (array[j] != array[i])
 		print_array(array, size);
-	nstart = 0;
-	if (i == 0)
-		nstop = i;
+	for (j = 0; j < (size - 1); j++)
+	{
+		if (array[j] > array[j + 1])
+		{
+			flag = 0;
+			break;
+		}
+		flag = 1;
+	}
+	if (flag == 1)
+		;
 	else
-		nstop = i - 1;
-	qsrec(nstart, nstop, array, size);
-	if ((i + 1) == size)
-		nstart = 1;
-	else
-		nstart = i + 1;
-	nstop = size - 1;
-	qsrec(nstart, nstop, array, size);
+	{
+		nstart = 0;
+		if (i == 0)
+			nstop = i;
+		else
+			nstop = i - 1;
+		qsrec(nstart, nstop, array, size);
+		if ((i + 1) == size)
+			nstart = 1;
+		else
+			nstart = i + 1;
+		nstop = size - 1;
+		qsrec(nstart, nstop, array, size);
+	}
 }
