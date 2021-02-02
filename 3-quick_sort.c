@@ -30,7 +30,7 @@ void qsrec(size_t start, size_t stop, int *array, size_t size)
 	int tmp, flag = 0;
 	size_t j, nstart, nstop, i = start;
 
-	if (start >= stop)
+	if (start > stop)
 		return;
 	for (j = start; j < stop; j++)
 	{
