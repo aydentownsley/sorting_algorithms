@@ -2,7 +2,7 @@
 
 void qsrec(size_t start, size_t stop, int *array, size_t size);
 /**
- * quick_sort - function to assort integers in ascending order
+ * quick_sort_hoare - function to assort integers in ascending order
  * @array: array to sort
  * @size: size of array
  */
