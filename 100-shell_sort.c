@@ -37,7 +37,7 @@ size_t k_val(size_t b)
 
 void shell_sort(int *array, size_t size)
 {
-	size_t knuth = 2, k_gap, idx, idy, s = size, swap_flag = 0;
+	size_t knuth = size, k_gap, idx, idy, s = size, swap_flag = 0;
 	int tmp;
 
 	for (k_gap = k_val(knuth); k_gap > 0; k_gap = k_val(knuth--))
