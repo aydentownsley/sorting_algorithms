@@ -12,7 +12,7 @@ void quick_sort(int *array, size_t size)
 	int start = 0;
 	size_t stop = (size - 1);
 
-	if (size < 2)
+	if (size < 2 || array == NULL)
 		return;
 	qsrec(start, stop, array, size);
 }
