@@ -19,7 +19,7 @@ void counting_sort(int *array, size_t size)
 		if (array[x] > k)
 			k = array[x];
 	}
-	carr = malloc((k + 1) * 4);
+	carr = malloc((k + 1) * sizeof(int));
 	if (carr == NULL)
 		return;
 	for (x = 0; x < size; x++)
@@ -28,7 +28,7 @@ void counting_sort(int *array, size_t size)
 	for (x = 0; x <= t; x++)
 		carr[x + 1] += carr[x];
 	print_array(carr, (k + 1));
-	sarr = malloc(size * 4);
+	sarr = malloc(size * sizeof(int));
 	if (sarr == NULL)
 	{
 		free(carr);
