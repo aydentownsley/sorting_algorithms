@@ -22,6 +22,7 @@ void counting_sort(int *array, size_t size)
 	carr = malloc((k + 1) * sizeof(int));
 	if (carr == NULL)
 		return;
+	carr[0] = 0;
 	for (x = 0; x < size; x++)
 		carr[array[x]] += 1;
 	t = k;
