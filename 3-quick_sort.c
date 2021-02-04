@@ -1,6 +1,6 @@
 #include "sort.h"
 
-void qsrec(size_t start, size_t stop, int *array, size_t size);
+void qsrec(int start, int stop, int *array, size_t size);
 /**
  * quick_sort - function to assort integers in ascending order
  * @array: array to sort
@@ -25,12 +25,11 @@ void quick_sort(int *array, size_t size)
  * @size: size of array
  */
 
-void qsrec(size_t start, size_t stop, int *array, size_t size)
+void qsrec(int start, int stop, int *array, size_t size)
 {
-	int tmp, flag = 0;
-	size_t j, nstart, nstop, i = start;
+	int tmp, j, nstart, nstop, i = start;
 
-	if (start >= stop)
+	if (stop - start < 1)
 		return;
 	for (j = start; j < stop; j++)
 	{
@@ -49,30 +48,8 @@ void qsrec(size_t start, size_t stop, int *array, size_t size)
 	array[stop] = tmp;
 	if (array[j] != array[i])
 		print_array(array, size);
-	for (j = 0; j < (size - 1); j++)
-	{
-		if (array[j] > array[j + 1])
-		{
-			flag = 0;
-			break;
-		}
-		flag = 1;
-	}
-	if (flag == 1)
-		;
-	else
-	{
-		nstart = 0;
-		if (i == 0)
-			nstop = i;
-		else
-			nstop = i - 1;
-		qsrec(nstart, nstop, array, size);
-		if ((i + 1) == size)
-			nstart = 1;
-		else
-			nstart = i + 1;
-		nstop = size - 1;
-		qsrec(nstart, nstop, array, size);
-	}
+	nstop = i - 1;
+	qsrec(start, nstop, array, size);
+	nstart = i + 1;
+	qsrec(nstart, stop, array, size);
 }
