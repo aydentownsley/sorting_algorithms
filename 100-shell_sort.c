@@ -1,9 +1,8 @@
 #include "sort.h"
 
 /**
- * num_pow - power function
- * @a: base
- * @b: power
+ * k_val - power function
+ * @b: size
  * Return: result
  */
 
@@ -37,8 +36,11 @@ size_t k_val(size_t b)
 
 void shell_sort(int *array, size_t size)
 {
-	size_t knuth = 2, k_gap, idx, idy, s = size, swap_flag = 0;
+	size_t knuth = size, k_gap, idx, idy, s = size, swap_flag = 0;
 	int tmp;
+
+	if (size < 2 || array == NULL)
+		return;
 
 	for (k_gap = k_val(knuth); k_gap > 0; k_gap = k_val(knuth--))
 	{
